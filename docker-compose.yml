@@ -1,0 +1,19 @@
+version: '2'
+services:
+  www:
+    image: nginx:latest
+    volumes:
+      - ./config/nginx.conf:/etc/nginx/nginx.conf
+      - ./public:/var/www/public
+      - ./config/server.crt:/etc/nginx/server.crt
+      - ./config/server.key:/etc/nginx/server.key
+    links:
+      - app
+    ports:
+      - "80:80"
+      - "443:443"
+  app:
+    build: .
+    command: pm2 start index.js --no-daemon
+    volumes:
+      - .:/app
