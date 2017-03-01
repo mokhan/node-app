@@ -2,5 +2,8 @@
   "name": "node-app",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "pm2": "^2.4.2"
+  }
 }
